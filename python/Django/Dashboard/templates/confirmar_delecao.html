@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+    <style>
+        /* Seus estilos aqui */
+        /* ... */
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="botoestopo">
+            <a href="{% url 'logout' %}"><button>Logout</button></a>
+            <a href="{% url 'dashboard' %}"><button>Dashboard</button></a>
+        </div> 
+        <div class="title">
+            <p style="font-size: 40px;"><strong>E-Pet</strong></p>
+            <p style="font-size: 20px;">O Assistente pessoal do seu Pet</p>
+        </div>        
+    </div> 
+    <div class="form-container">
+        <h2>Confirmar Exclusão</h2>
+        <p>Você tem certeza de que deseja excluir o cachorro "{{ cachorro.nome }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Excluir</button>
+            <a href="{% url 'dashboard' %}"><button type="button">Cancelar</button></a>
+        </form>
+    </div>
+</body>
+</html>

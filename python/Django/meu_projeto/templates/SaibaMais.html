@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Inicial</title>
+    <link rel="stylesheet" href="{% static 'meu_projeto\css\styles.css' %}">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="botoestopo">
+            <!-- Adicione um botão para redirecionar para a página de CriarConta -->
+            <a href="{% url 'CriarConta' %}"><button>Criar Conta</button></a>
+            <!-- Adicione um botão para redirecionar para a página de login -->
+            <a href="{% url 'login' %}"><button>Login</button></a>
+            <!-- Adicione um botão para redirecionar para a página inicial -->
+            <a href="{% url 'TelaInicial' %}"><button>Tela incial</button></a>
+        </div> 
+        <div class="title">
+            
+            <p style="font-size: 40px;"><strong>E-Pet</strong></p>
+            <p style="font-size: 20px;">O Assistente pessoal do seu Pet</p>
+        </div>        
+        </form>
+        <div class="conteiner">
+            <p></p>
+            <div class="meu-form">
+                <p style="font-size: 40px;"><strong>TCC - Alimentador Automático</strong></p>
+                <p style="font-size: 20px;">Este site foi criado com o intuito de servir como uma plataforma online de controle e acompanhamento de um alimentador automátio para <I>pets</I>. Este projeto foi desenvolvido como um Trabalho de Conclusão do Curso I de Engenharia de Controle e Automação.</p>
+                <p style="font-size: 20px;">Discentes: Arthur S. Passos; Rakel G. Couto;</p>
+                
+            </div>
+
+        </div>        
+    </div>
+
+    
+</body>
+</html>
