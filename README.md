@@ -203,7 +203,13 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 
 ---
 
-## Contribuição
+## Pendências
+
+- [ ] Adicionar arquivo Arduino de configuração da ESP32CAM 
+
+---
+
+<!-- ## Contribuição
 
 Contribuições são bem-vindas! Para contribuir:
 
@@ -211,7 +217,7 @@ Contribuições são bem-vindas! Para contribuir:
 2. Crie uma branch para sua feature: `git checkout -b feature/minha-feature`
 3. Commit suas mudanças: `git commit -m 'feat: adiciona minha feature'`
 4. Faça o push para sua branch: `git push origin feature/minha-feature`
-5. Abra um Pull Request.
+5. Abra um Pull Request. -->
 
 ---
 
