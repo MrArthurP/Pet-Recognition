@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Barra superior */
+        .top-bar {
+            background: linear-gradient(rgba(72, 221, 237, 0.728), white);
+            color: black;
+            padding: 15px;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Título */
+        .title {
+            color: black;
+            text-align: center;
+            flex: 1;
+            font-family: 'Fantasy', sans-serif;
+        }
+
+        /* Botões no topo */
+        .botoestopo {
+            text-align: left;
+            background-color: transparent;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .botoestopo button {
+            padding: 0.7em;
+            color: black;
+            background-color: transparent;
+            border: none;
+            border-radius: 0.3em;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .botoestopo a button:hover {
+            border: 1px solid black;
+        }
+
+        #alarme {
+            font-size: 24px;
+            color: white;
+            transition: opacity 0.5s ease-in-out;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            position: fixed; /* Fixa o alarme no topo */
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Certifica-se de que o alarme fique acima de outros elementos */
+            border: 2px solid black;
+            background-color: red;
+            display: none; /* Oculta inicialmente */
+        }
+
+        .active {
+            display: block;
+            animation: piscar 1s infinite; /* Aplica a animação de piscar */
+        }
+
+        .inactive {
+            opacity: 0;
+            display: none; /* Oculta o elemento após a animação */
+        }
+
+        @keyframes piscar {
+            0% { background-color: red; }
+            50% { background-color: white; }
+            100% { background-color: red; }
+        }
+
+
+
+        /* Contêiner principal */
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+
+        /* Lista de cachorros */
+        .cachorros-list {
+            flex: 0 0 30%; /* Reduz a largura */
+            padding: 20px;
+            border-right: 1px solid #ccc;
+            height: calc(100vh - 40px); /* Altura ajustada para ocupar o restante da tela */
+            overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+
+        }
+
+        .cachorro-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        /* Botões de acionamento */
+        .botoesinput {
+            flex: 1;
+            padding: 20px;
+            height: calc(100vh - 80px); /* Altura ajustada para ocupar o restante da tela */
+            overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+        }
+
+        /* Estilo para botões de input */
+        .botoesinput button {
+            padding: 0.7em;
+            color: black;
+            background-color: transparent;
+            border-radius: 0.3em;
+            width: 100px;
+            cursor: pointer;
+            font-size: 1em;
+            border: 1px solid black;
+        }
+
+        .botoesinput button:hover {
+            border: 2px solid black;
+        }
+
+        /* Container para Horários de Alimentação e Quantidade de Ração */
+        .horarios-e-racao {
+            display: flex; /* Alinha os dois contêineres lado a lado */
+            justify-content: space-between; /* Espaça os contêineres */
+        }
+
+        .horario-alimentacao, .quantidade-alimentacao {
+            flex: 1; /* Cada um ocupa 50% do espaço disponível */
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="botoestopo">
+            <a href="{% url 'logout' %}"><button>Logout</button></a>
+            <a href="{% url 'cadastrar_cachorro' %}"><button>Cadastrar Pet</button></a>
+            <!-- <a href="{% url 'mostrar_imagem' %}"><button>Identificar Pet</button></a> -->
+        </div> 
+        <div class="title">
+            <p style="font-size: 40px;"><strong>E-Pet</strong></p>
+            <p style="font-size: 20px;">O Assistente pessoal do seu Pet</p>
+        </div>        
+    </div> 
+
+    <div id="alarme" class="inactive">
+        NIVEL BAIXO!! Adicione ração ao alimentador!
+        <button class="close-button" onclick="fecharAlarme()">X</button>
+    </div> 
+
+    <div class="container">
+        <div class="cachorros-list">
+            <h2>Pets Cadastrados</h2>
+            {% if cachorros %}
+                <ul>
+                    {% for cachorro in cachorros %}
+                    <li class="cachorro-item">
+                        <a href="{% url 'editar_cachorro' cachorro.id %}">
+                            <strong>Nome:</strong> {{ cachorro.nome }}<br>
+                        </a>
+                        <strong>Data de Nascimento:</strong> {{ cachorro.data_nascimento }}<br>
+                        <strong>Peso:</strong> {{ cachorro.peso }} kg<br>
+                        <strong>Altura:</strong> {{ cachorro.altura }} cm<br>
+                        {% if cachorro.foto_principal %}
+                        <img src="{{ cachorro.foto_principal.url }}" alt="Foto principal de {{ cachorro.nome }}" style="max-width: 100px; max-height: 100px;">
+                        {% else %}
+                        <p>Este cachorro ainda não tem foto principal.</p>
+                        {% endif %}
+                        {% if cachorro.fotos.all %}
+                        <h4>Outras fotos:</h4>
+                        <ul>
+                            {% for foto in cachorro.fotos.all %}
+                            <li>
+                                <img src="{{ foto.imagem.url }}" alt="Foto de {{ cachorro.nome }}" style="max-width: 100px; max-height: 100px;">
+                            </li>
+                            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Este cachorro ainda não tem outras fotos.</p>
+        {% endif %}
+    </li>
+{% endfor %}
+
+
+                </ul>
+            {% else %}
+                <p>Nenhum cachorro cadastrado.</p>
+            {% endif %}
+        </div>
+
+        <div class="botoesinput">
+            <p style="font-size: 20px;">Controle seu assistente</p>
+            <div class="botoes-motor">
+                <button type="button" onclick="enviarMensagem('Start_Motor')">Ligar Motor</button>
+                <button type="button" onclick="enviarMensagem('Stop_Motor')">Desligar Motor</button>
+                <button type="button" onclick="enviarMensagem('Encher_Alimentador')">Encher Alimentador</button>
+                <button type="button" onclick="enviarMensagem('Tirar_Foto')">Identificar Pet</button>
+                <!-- <button type="button" onclick="enviarMensagem('Tirar_Foto')">Tirar foto</button> -->
+                <!-- <a onclick="enviarMensagem('Tirar_Foto')" href="{% url 'mostrar_imagem' %}"><button>Identificar Pet</button></a> -->
+            </div>
+        
+            <div class="horarios-e-racao">
+                <div class="horario-alimentacao">
+                    <h3>Horários de Alimentação</h3>
+                    <p>Adicione o horário da primeira alimentação do seu pet:</p>
+                    <input type="time" id="horario1" />
+                    <p>Adicione o horário da segunda alimentação do seu pet:</p>
+                    <input type="time" id="horario2" />
+                    <button type="button" onclick="enviarHorario()">Adicionar Horários</button>
+                </div>
+                
+                <div class="quantidade-alimentacao">
+                    <h3>Tempo de Funcionamento do Motor</h3>
+                    <p>Defina o tempo que o motor deve ficar ligado (em segundos):</p>
+                    <input type="number" id="tempoMotor" placeholder="Tempo em segundos" min="1" />
+                </div>                  
+            </div>
+                <img id="imagem-camara" alt="Imagem da câmera" />
+                <div id="resultado-verificacao"></div> 
+        </div>
+    <script>
+        // function checkButtonStates() {
+        //     fetch('/get_button_states/')
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             if (data.estado1 === 'NivelBaixo') {
+        //                 // Anime seu alarme aqui
+        //                 document.getElementById('alarme').classList.add('animar');
+        //             } else {
+        //                 document.getElementById('alarme').classList.remove('animar');
+        //             }
+        //         });
+        // }
+
+        // Verifica o estado a cada 2 segundos (2000 ms)
+        // setInterval(checkButtonStates, 2000);
+        
+        // function processarDados(dados) {
+        //     console.log('Dados recebidos:', dados);
+            
+        //     // Converte dados do QueryDict para um objeto JavaScript
+        //     const estados = {
+        //         nivel: dados.nivel[0],
+        //         estado: dados.estado[0]
+        //     };
+
+        //     // Atualiza o alarme com base nos estados
+        //     atualizaAlarme(estados);
+        // }
+
+        // function atualizarAlarme() {
+        //     fetch('/update_button/', {  // Use a URL correta
+        //         method: 'POST', // Altere para POST
+        //         headers: {
+        //             'Content-Type': 'application/x-www-form-urlencoded',
+        //             'X-CSRFToken': '{{ csrf_token }}', // Adicione o token CSRF
+        //         },
+        //         body: 'nivel=1&estado=NivelBaixo' // Envie os dados que deseja
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         const alarmeElement = document.getElementById('alarme');
+        //         if (data.estado1 === 'NivelBaixo') {
+        //             alarmeElement.classList.add('animar');
+        //         } else {
+        //             alarmeElement.classList.remove('animar');
+        //         }
+        //     });
+        // }
+
+
+        // setInterval(atualizarAlarme, 1000); // Atualiza a cada segundo
+
+        // function fecharAlarme() {
+        //     document.getElementById('alarme').style.display = 'none';
+        // }
+
+        // Função para obter o estado dos botões a cada 100ms
+        // function obterEstadoBotao() {
+        //     fetch('http://192.168.0.202:8000/update_button/', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/x-www-form-urlencoded',
+        //         },
+        //         body: 'nivel=1&estado=NivelAlto'
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => console.log(data))
+        //     .catch(error => console.error('Erro:', error));
+        // }
+        function fecharAlarme() {
+            const alarme = document.getElementById('alarme');
+            alarme.classList.remove('active');
+            alarme.classList.add('inactive');
+            setTimeout(() => {
+                alarme.style.display = 'none'; // Oculta o alarme após a animação
+            }, 500); // Tempo para coincidir com a animação de desvanecimento
+        }
+
+        function checkButtonStates() {
+            fetch('/get_button_states/')
+                .then(response => response.json())
+                .then(data => {
+                    updateAlarme(data.estado); // Assumindo que "estado" está retornando o estado correto
+                });
+        }
+
+        // Verifica o estado a cada 2 segundos (2000 ms)
+        setInterval(checkButtonStates, 2000);
+
+
+
+        function updateAlarme(estado) {
+            const alarme = document.getElementById("alarme");
+            if (estado === "NivelBaixo") {
+                alarme.classList.add("active");
+                alarme.classList.remove("inactive");
+                alarme.style.display = "block"; // Exibe o alarme
+            } else if (estado === "NivelAlto") {
+                alarme.classList.remove("active");
+                alarme.classList.add("inactive");
+                setTimeout(() => {
+                    alarme.style.display = "none"; // Oculta o alarme após a animação
+                }, 500); // Tempo para coincidir com a animação de desvanecimento
+            }
+        }
+
+        // Função para enviar os horários e o tempo do motor
+        function enviarHorario() {
+            const horario1 = document.getElementById('horario1').value;
+            const horario2 = document.getElementById('horario2').value;
+            const tempoMotor = document.getElementById('tempoMotor').value;
+
+            if (!horario1 || !horario2 || !tempoMotor) {
+                alert('Por favor, preencha os horários de alimentação e o tempo do motor.');
+                return;
+            }
+
+            // Envie os horários de alimentação e o tempo do motor para a view enviar_horarios
+            fetch("{% url 'enviar_horarios' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify({ 
+                    horario1: horario1, 
+                    horario2: horario2,
+                    tempoMotor: tempoMotor // Adiciona o tempo do motor no payload
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Horários e tempo de funcionamento do motor enviados com sucesso!");
+                } else {
+                    alert("Erro ao enviar os horários ou tempo do motor.");
+                }
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+        }
+
+        // Função para enviar a mensagem de controle do motor
+        function enviarMensagem(msg) {
+            console.log("Mensagem a ser enviada:", msg); // Log para verificar a mensagem enviada
+            fetch("{% url 'enviar_mensagem' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify({ mensagem: msg }) // Altere 'msg' para 'mensagem'
+            })
+            fetch("{% url 'mostrar_imagem' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify({ mensagem: msg }) // Altere 'msg' para 'mensagem'
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Comando enviado com sucesso!");
+                } else {
+                    alert("Erro ao enviar os horários.");
+                }
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+        }
+        setInterval(obterEstadoBotao, 1000);
+
+    </script>
+</body>
+</html>

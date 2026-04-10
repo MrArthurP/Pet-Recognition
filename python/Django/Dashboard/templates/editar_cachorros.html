@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Pet</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .top-bar {
+            background: linear-gradient(rgba(72, 221, 237, 0.728), white);
+            color: black;
+            padding: 15px;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Título */
+        .title {
+            color: black;
+            text-align: center;
+            flex: 1;
+            font-family: 'Fantasy', sans-serif;
+        }
+
+        /* Botões no topo */
+        .botoestopo {
+            text-align: left;
+            background-color: transparent;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .botoestopo button {
+            padding: 0.7em;
+            color: black;
+            background-color: transparent;
+            border: none;
+            border-radius: 0.3em;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .botoestopo a button:hover {
+            border: 1px solid black;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+            /* Remover a altura fixa */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group input[type="date"] {
+            font-size: 1em;
+        }
+
+        .form-group .unit {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .botoesinput {
+            padding: 20px;
+            text-align: center; /* Centraliza os botões */
+        }
+
+        .botoesinput button {
+            padding: 0.7em;
+            color: black;
+            background-color: transparent;
+            border-radius: 5px;
+            width: 150px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1em;
+            border: 1px solid black;
+            margin: 0 10px; /* Espaçamento horizontal entre os botões */
+        }
+
+        .botoesinput button:hover {
+            border: 2px solid black;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="botoestopo">
+            <a href="{% url 'logout' %}"><button>Logout</button></a>
+            <a href="{% url 'dashboard' %}"><button>Dashboard</button></a>
+        </div> 
+        <div class="title">
+            <p style="font-size: 40px;"><strong>E-Pet</strong></p>
+            <p style="font-size: 20px;">O Assistente pessoal do seu Pet</p>
+        </div>        
+    </div> 
+    <div class="form-container">
+        <h2>Editar Cachorro</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                {{ form.nome }}
+            </div>
+
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                {{ form.data_nascimento }}
+            </div>
+
+            <div class="form-group">
+                <label for="peso">Peso:</label>
+                {{ form.peso }}
+                <span class="unit">kg</span>
+            </div>
+
+            <div class="form-group">
+                <label for="altura">Altura:</label>
+                {{ form.altura }}
+                <span class="unit">cm</span>
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Foto:</label>
+                {{ form.foto }}
+            </div>
+        </form>
+
+        <div class="botoesinput">
+            <form method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background-color: rgba(72, 221, 237, 0.728); color: black;">Salvar alterações</button>
+            </form>
+            <form method="post" action="{% url 'deletar_cachorro' cachorro.id%}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background-color: red; color: white;">Deletar Cachorro</button>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "users/base.html" %}
+{% block title %} Criar conta {% endblock title%}
+{% load static %}
+{% block content %}
+<div class="top-bar">
+    <div class="botoestopo">
+        <!-- Adicione um botão para redirecionar para a página de CriarConta -->
+        <a href="{% url 'CriarConta' %}"><button>Criar Conta</button></a>
+        <!-- Adicione um botão para redirecionar para a página de login -->
+        <a href="{% url 'login' %}"><button>Login</button></a>
+        <!-- Adicione um botão para redirecionar para a página inicial -->
+        <a href="{% url 'TelaInicial' %}"><button>Tela Inicial</button></a>
+        <!-- <a href="{% url 'SaibaMais' %}"><button>Saiba mais</button></a> -->
+    </div> 
+    <div class="conteiner">
+        <div class="title">
+            <p style="font-size: 40px;"><strong>Bem vindo!</strong></p>
+            <p style="font-size: 20px;">Este é um <b>sistema de registro e login de usuário</b> construído com Django que é
+                uma estrutura da web gratuita e de código aberto baseada em Python que segue o padrão arquitetônico model-template-views.</p>
+            <!-- <hr class="my-4"> -->
+        </div>   
+        <div class="meu-form">
+            <p class="lead">
+                <a href="{% url 'RegisterView' %}"><button>Criar Conta</button></a>
+                <a href="{% url 'logout' %}"><button>Sair</button></a>
+                <!-- <a class="btn btn-primary btn-lg" href="{% url 'logout' %}" role="button">Sair</a> -->
+                <!-- <a class="btn btn-primary btn-lg" href="{% url 'RegisterView' %}" role="button">Criar Conta</a> -->
+               
+            </p>
+        </div>
+        
+    </div>        
+    </form>
+</div>
+
+
+    
+
+{% endblock content %}

@@ -1,0 +1,106 @@
+{% extends "users/base.html" %}
+{% block title %} Register Page {% endblock title%}
+{% block content %}
+<div class="top-bar">
+    <div class="botoestopo">
+        <!-- Adicione um botão para redirecionar para a página de CriarConta -->
+        <a href="{% url 'CriarConta' %}"><button>Criar Conta</button></a>
+        <!-- Adicione um botão para redirecionar para a página de login -->
+        <a href="{% url 'login' %}"><button>Login</button></a>
+        <!-- Adicione um botão para redirecionar para a página inicial -->
+        <a href="{% url 'TelaInicial' %}"><button>Tela Inicial</button></a>
+        <!-- <a href="{% url 'SaibaMais' %}"><button>Saiba mais</button></a> -->
+    </div> 
+    <!-- <div class="title"> -->
+        <!-- <p style="font-size: 40px;"><strong>E-Pet</strong></p>
+        <p style="font-size: 20px;">O Assistente pessoal do seu Pet</p> -->
+    <!-- </div>         -->
+    <!-- </form> -->
+    <div cass="conteiner">
+        <div class="meu-form">
+            <!-- <div class="container"> -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card shadow-lg border-0 rounded-lg mt-0 mb-5">
+                            <div class="card-header justify-content-center">
+                                <h3 class="font-weight-light my-4 text-center">Criar Conta</h3>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {% if form.errors %}
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <div id="form_errors">
+                                                {% for key, value in form.errors.items %}
+                                                    <strong>{{ value }}</strong>
+                                                {% endfor %}
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="small mb-1">Primeiro Nome</label>
+                                                {{ form.first_name }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="small mb-1">Último Nome</label>
+                                                {{ form.last_name }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="small mb-1">Usuário</label>
+                                                {{ form.username }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="small mb-1">Email</label>
+                                                {{ form.email }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="small mb-1">Senha</label>
+                                                {{ form.password1 }}
+                                                {{ form.errors.password }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+    
+                                            <div class="form-group">
+                                                <label class="small mb-1">Confirme sua senha</label>
+                                                {{ form.password2 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-4 mb-0">
+                                        <button type="submit" class="col-md-12 btn btn-dark">Criar Conta</button><br><br>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center">
+                                <div class="small">
+                                    <a href="{% url 'login' %}">Tem uma conta? Vá para Logar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+
+    
+{% endblock content %}

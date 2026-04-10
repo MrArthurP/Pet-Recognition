@@ -1,0 +1,161 @@
+/* styles.css */
+
+.top-bar {
+    background: linear-gradient( rgba(72, 221, 237, 0.728), white);
+    color: black;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    padding: 15px;
+    width: 98%;
+    height: 20%;
+}
+
+/* Container pai que envolve o conteúdo */
+.container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;    /* Centraliza verticalmente */
+    height: 150vh;          /* Ocupa toda a altura da viewport */
+    background-color: white; /* Opcional: Cor de fundo para visualização */
+}
+
+.title {
+    color: black;
+    text-align: center;
+    font-family: 'Fantasy', sans-serif;
+    padding: 20px;
+    background-color: white; /* Opcional: Fundo do título */
+    border-radius: 8px;      /* Opcional: Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: Sombra */
+    max-width: 100%; /* Garante que o título não exceda a largura da tela em dispositivos móveis */
+}
+
+.botoestopo {
+    text-align: left; /* Alinha o texto à esquerda dentro do elemento */
+    left: 5;
+    background-color: transparent;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/* Estilo para os botões */
+.botoestopo button {
+    padding: 0.7em;
+    color: black;
+    background-color: transparent;
+    border: none;
+    border-radius: .3em;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.botoestopo a button:hover {
+    border: 1px solid black;
+}
+
+.meu-form {
+    color: black;
+    text-align: center;
+    font-family: 'Fantasy', sans-serif;
+    padding: 20px;
+    background-color: white; /* Opcional: Fundo do título */
+    border-radius: 8px;      /* Opcional: Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: Sombra */
+    width: 80%; /* Aumenta a largura para 80% da tela */
+    max-width: 800px; /* Ajusta a largura máxima para garantir que não exceda 800px */
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+}
+
+
+/* .meu-form {
+    position: absolute;
+    width: 350px;
+    top: 270px;
+    left: 550px;
+    margin: 0 auto;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    background-color: #f9f9f9;
+    
+} */
+
+.meu-form div {
+    margin-bottom: 1em;
+}
+
+.meu-form label {
+    margin-bottom: .5em;
+    color: #333333;
+    display: block;
+}
+
+.meu-form input {
+    border: 1px solid #CCCCCC;
+    padding: .5em;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: .3em;
+}
+
+.meu-form button {
+    padding: 0.7em;
+    color: black;
+    background-color: transparent;
+    border-radius: .3em;
+    cursor: pointer;
+    font-size: 1em;
+    border: 1px solid black;
+}
+
+.meu-form button:hover {
+    border: 2px solid black;
+}
+
+.Login {
+    background-color: #f9f9f9; /* Cor de fundo */
+    padding: 20px; /* Espaçamento interno */
+    width: 300px; /* Largura do formulário */
+    margin: 0 auto; /* Centraliza na página */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+/* Estilo para o formulário dentro da área de login */
+.Login form {
+    display: flex; /* Utiliza flexbox para alinhar verticalmente */
+    flex-direction: column; /* Alinha os elementos verticalmente */
+}
+
+/* Estilo para mensagens de erro */
+.Login .error-message {
+    color: red; /* Cor do texto vermelho */
+    margin-bottom: 10px; /* Margem inferior */
+}
+
+/* Estilo para botões de login e criar conta */
+.Login .botoes {
+    margin-top: 10px; /* Margem superior */
+}
+
+.Login .botoes a {
+    display: inline-block; /* Exibe como bloco inline */
+    margin-right: 10px; /* Margem direita entre os botões */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.Login .botoes button {
+    background-color: transparent; /* Cor de fundo azul */
+    color: black; /* Cor do texto branco */
+    border: 1px solid black;
+    padding: 10px 20px; /* Espaçamento interno */
+    cursor: pointer; /* Altera o cursor para mão ao passar o mouse */
+    border-radius: .3em; /* Bordas arredondadas */
+    transition: background-color 0.3s; /* Transição suave de cor de fundo */
+}
+
+.Login .botoes button:hover {
+    border: 2px solid black; /* Cor de fundo mais escura ao passar o mouse */
+}

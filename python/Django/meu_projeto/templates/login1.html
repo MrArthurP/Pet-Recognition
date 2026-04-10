@@ -1,0 +1,50 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'meu_projeto\css\styles.css' %}">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="botoestopo">
+            <!-- Adicione um botão para redirecionar para a página de CriarConta -->
+            <a href="{% url 'CriarConta' %}"><button>Criar Conta</button></a>
+            <!-- Adicione um botão para redirecionar para a página de login -->
+            <a href="{% url 'login' %}"><button>Login</button></a>
+            <!-- Adicione um botão para redirecionar para a página inicial -->
+            <a href="{% url 'TelaInicial' %}"><button>Saiba mais</button></a>
+        </div> 
+        <div class="title">
+            <p style="font-size: 40px;"><strong>E-Pet</strong></p>
+            <p style="font-size: 20px;">O Assistente pessoal do seu Pet</p>
+        </div>        
+        </form>
+    </div>
+    <div class="Login">
+        <form method="post">
+            {% csrf_token %}
+            <div class="meu-form">
+                {% if error %}
+                <p class="error-message">{{ error }}</p>
+                {% endif %}
+                <div>
+                    <label for="id_username">Usuário:</label>
+                    <input type="text" id="id_username" name="username" required>
+                </div>
+                <div>
+                    <label for="id_password">Senha:</label>
+                    <input type="password" id="id_password" name="password" required>
+                </div>
+                <div class="botoes">
+                    <button type="submit">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
