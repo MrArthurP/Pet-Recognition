@@ -1,0 +1,59 @@
+# Python virtual environment
+venv/
+
+# Keep folders, ignore local dataset/model content
+python/Inteligencia_Artificial/anchor/*
+!python/Inteligencia_Artificial/anchor/.gitkeep
+
+python/Inteligencia_Artificial/positive/*
+!python/Inteligencia_Artificial/positive/.gitkeep
+
+python/Inteligencia_Artificial/negative/*
+!python/Inteligencia_Artificial/negative/.gitkeep
+
+python/Inteligencia_Artificial/models/*
+!python/Inteligencia_Artificial/models/.gitkeep
+
+python/Inteligencia_Artificial/training_checkpoints/*
+!python/Inteligencia_Artificial/training_checkpoints/.gitkeep
+
+# Application data: keep folder structure only
+python/Inteligencia_Artificial/application_data/input_image/*
+!python/Inteligencia_Artificial/application_data/input_image/.gitkeep
+
+python/Inteligencia_Artificial/application_data/verification_images/*
+!python/Inteligencia_Artificial/application_data/verification_images/.gitkeep
+python/Inteligencia_Artificial/application_data/verification_images/**/*
+!python/Inteligencia_Artificial/application_data/verification_images/**/
+!python/Inteligencia_Artificial/application_data/verification_images/**/.gitkeep
+
+# Generic keep marker
+!**/.gitkeep
+# .gitignore
+venv/
+
+# Dataset images (ignorar imagens, manter diretórios via .gitkeep)
+python/Inteligencia_Artificial/positive/*.jpg
+python/Inteligencia_Artificial/positive/*.jpeg
+python/Inteligencia_Artificial/positive/*.png
+python/Inteligencia_Artificial/negative/*.jpg
+python/Inteligencia_Artificial/negative/*.jpeg
+python/Inteligencia_Artificial/negative/*.png
+python/Inteligencia_Artificial/anchor/*.jpg
+python/Inteligencia_Artificial/anchor/*.jpeg
+python/Inteligencia_Artificial/anchor/*.png
+python/Inteligencia_Artificial/application_data/input_image/*.jpg
+python/Inteligencia_Artificial/application_data/input_image/*.jpeg
+python/Inteligencia_Artificial/application_data/input_image/*.png
+python/Inteligencia_Artificial/application_data/verification_images/**/*.jpg
+python/Inteligencia_Artificial/application_data/verification_images/**/*.jpeg
+python/Inteligencia_Artificial/application_data/verification_images/**/*.png
+!**/.gitkeep
+
+# Modelos salvos
+python/Inteligencia_Artificial/models/*.h5
+
+# Checkpoints de treinamento (manter pasta, ignorar conteúdo)
+python/Inteligencia_Artificial/training_checkpoints/*
+!python/Inteligencia_Artificial/training_checkpoints/.gitkeep
+
