@@ -55,3 +55,4 @@ python/Inteligencia_Artificial/training_graphs/**
 # Manter pastas e placeholders visíveis para o projeto
 !python/Inteligencia_Artificial/**/.gitkeep
 !python/Inteligencia_Artificial/**/README.md
+*:Zone.Identifier
