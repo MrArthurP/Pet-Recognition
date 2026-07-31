@@ -1,0 +1,28 @@
+# Arquivos gerados pela compilação do LaTeX
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.bcf
+*.run.xml
+*.bak
+*.tmp
+
+# Arquivos temporários de compilação
+*-blx.bib
+*.brf
+*.idx
+*.ilg
+*.ind

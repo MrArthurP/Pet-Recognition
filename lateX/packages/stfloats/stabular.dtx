@@ -1,0 +1,323 @@
+% \iffalse meta-comment/*%    \end{macrocode}*/
+%
+% Copyright (C) 2025 by Sigitas Tolu\v{s}is <sigitas@vtex.lt>
+% ---------------------------------------------------------------------------
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Sigitas Tolu\v{s}is.
+%
+% This work consists of the files stabular.dtx and stabular.ins
+% and the derived filebase stabular.sty.
+%
+% \fi
+%
+% \iffalse
+%<*internal>
+\begingroup
+%</internal>
+%<*batchfile>
+\input docstrip.tex
+\keepsilent\askforoverwritefalse
+\preamble
+%%
+%% This is file `stabular.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% stabular.dtx  (with options: `package')
+%% 
+\endpreamble
+\generate{\file{stabular.sty}{\from{stabular.dtx}{package}}}
+%</batchfile>
+%<batchfile>\endbatchfile
+%<*internal>
+\generate{\file{stabular.ins}{\from{stabular.dtx}{batchfile}}}
+\endgroup
+%</internal>
+%<*driver>
+\ProvidesFile{stabular.dtx}
+%</driver>
+%<*package>
+%% Copyright (C) 1998-2025 by Sigitas Tolu\v{s}is <sigitas@vtex.lt>
+%% UAB VTeX, Mokslininkų 2A, LT-08412 Vilnius, Lithuania
+%% --------------------------------------------------------------------------
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% PURPOSE:   Improve tabular environment.
+%%
+%</package>
+%<package>\NeedsTeXFormat{LaTeX2e}[2025/06/01]
+%<package>\ProvidesPackage{stabular}
+%<*package>
+    [2025/06/18 v2.3 Improve tabular environment (ST)]
+%</package>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{stabular}[2025/06/18]
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{stabular.dtx}
+  %%\PrintChanges
+  %%\PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{266}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \changes{v1.1}{2012/05/29}{Converted to DTX file}
+% \changes{v1.2}{2014/01/13}{Fixed bug in the '@sarray' macro}
+% \changes{v2.0}{2014/03/20}{Minimized code and extra functionality}
+% \changes{v2.1}{2021/10/04}{Sync with array bugfix version for tabular}
+% \changes{v2.3}{2025/06/18}{adapt to the latest latex kernel and a new hook}
+% \DoNotIndex{\newcommand,\newenvironment}
+%
+% \providecommand*{\url}{\texttt}
+% \GetFileInfo{stabular.dtx}
+% \title{The \textsf{stabular} package}
+% \author{Sigitas Tolu\v{s}is \\ \url{sigitas@vtex.lt}}
+% \date{\fileversion~from \filedate}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% \textbf{Purpose}: improve tabular environment by allowing page break.
+%
+% \section{Usage}
+%
+% Just insert |\noalign{\eject}| after command |\\| to do a page break inside
+% |stabular| environment.
+%
+% \DescribeMacro{stabular}
+% \DescribeMacro{stabular*}
+% Provides new environments: |stabular| and |stabular*|. 
+% It is one more multi-page version of tabular.
+%
+% \subsection{Package options}
+%
+% \DescribeMacro{array}
+%   \indent It is used to support tabular environment defined in array
+%   package.
+% 
+% \StopEventually{}
+%
+% \section{Implementation}
+%
+% \iffalse
+%<*package>
+% \fi
+%
+%
+%    \begin{macrocode}
+\chardef\use@@pkg@@array@@variant=0%
+\DeclareOption{array}{\global\chardef\use@@pkg@@array@@variant=1}
+\ProcessOptions*
+%    \end{macrocode}
+% 
+%
+% \begin{macro}{\kernel@stabular}
+%    \begin{macrocode}
+%%
+%% kernel version tabular
+%%
+\def\kernel@stabular{\let\@halignto\@empty\kernel@@stabular}
+\def\kernel@endstabular{\crcr\egroup\egroup\egroup}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\kernel@stabular*}
+%    \begin{macrocode}
+\@namedef{kernel@stabular*}#1{%
+  \setlength\dimen@{#1}%
+  \edef\@halignto{to\the\dimen@}%
+  \kernel@@tabular
+  }
+\expandafter\let\csname kernel@endstabular*\endcsname\endstabular
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\kernel@@stabular}
+%    \begin{macrocode}
+\def\kernel@@stabular{\leavevmode
+  \bgroup
+    \let\@acol\@tabacol
+    \let\@classz\@tabclassz
+    \let\@classiv\@tabclassiv
+    \let\\\@tabularcr
+    \kernel@@stabarray
+  }
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\kernel@@stabarray}
+%    \begin{macrocode}
+\def\kernel@@stabarray{\m@th\@ifnextchar[\kernel@@sarray{\kernel@@sarray[c]}}
+\def\kernel@@sarray[#1]#2{%
+  \bgroup
+    \setbox\@arstrutbox\hbox{%
+      \vrule \@height\arraystretch\ht\strutbox
+             \@depth\arraystretch \dp\strutbox
+             \@width\z@
+             }%
+  \@mkpream{#2}%
+  \edef\@preamble{%
+    \ialign \noexpand\@halignto
+      \bgroup \@arstrut \@preamble \tabskip\z@skip \cr
+    }%
+  \let\@startpbox\@@startpbox \let\@endpbox\@@endpbox
+  \let\tabularnewline\\
+  %%\let\par\@empty
+  \let\@sharp##%
+  \set@typeset@protect
+  \lineskip\z@skip \baselineskip\z@skip
+  \ifhmode \@preamerr\z@ \@@par\fi
+  \@preamble
+  }
+%    \end{macrocode}
+% \end{macro}
+% 
+%
+% \begin{macro}{pkgarray@stabular}
+%    \begin{macrocode}
+%%
+%% array package version tabular
+%%
+\def\pkgarray@stabular{\def\@halignto{}\pkgarray@@stabular}
+\def\pkgarray@endstabular{\endarray\egroup
+  \UseTaggingSocket{tbl/hmode/end}%
+  }
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{pkgarray@stabular*}
+%    \begin{macrocode}
+\expandafter\def\csname pkgarray@stabular*\endcsname#1{%
+       \setlength\dimen@{#1}%
+       \edef\@halignto{to\the\dimen@}\pkgarray@@stabular}
+\expandafter\let\csname pkgarray@endstabular*\endcsname\pkgarray@endstabular
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\pkgarray@@stabular}
+%    \begin{macrocode}
+\def\pkgarray@@stabular{%
+  \leavevmode
+  \UseTaggingSocket{tbl/hmode/begin}%
+  \bgroup
+    \MathCollectTrue
+    \col@sep\tabcolsep \let\d@llarbegin\begingroup
+                                    \let\d@llarend\endgroup
+    \@kernel@tabular@init
+    \pkgarray@@stabarray
+  }
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\pkgarray@@stabarray}
+%    \begin{macrocode}
+\def\pkgarray@@stabarray{\@ifnextchar[{\pkgarray@@sarray}{\pkgarray@@sarray[c]}}
+\def\pkgarray@@sarray[#1]#2{%
+  \@tempdima \ht \strutbox
+  \advance \@tempdima by\extrarowheight
+  \setbox \@arstrutbox \hbox{\vrule
+             \@height \arraystretch \@tempdima
+             \@depth \arraystretch \dp \strutbox
+             \@width \z@}%
+  \tbl_save_outer_table_cols:
+  \begingroup
+    \@mkpream{#2}%
+    \tbl_count_table_cols:
+    \xdef\@preamble{%
+      \noexpand \ar@ialign
+      \@halignto\bgroup
+         \@arstrut
+         \UseTaggingSocket{tbl/row/begin}%
+         \tbl_init_cell_data_for_row:
+          \@preamble
+          \tabskip \z@ \cr
+      }%
+  \endgroup
+  \@arrayleft
+  \bgroup
+    \let\@sharp##\let\protect\relax
+    \lineskip \z@
+    \baselineskip \z@
+    \mathsurround \z@
+    \let\\\@arraycr \let\tabularnewline\\%%\let\par\@empty
+    \UseTaggingSocket{tbl/init}%
+    \@preamble
+  }
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\load@stabular}
+%    \begin{macrocode}
+%%
+%% loading the appropriate version
+%%
+\def\load@stabular#1{%
+  \expandafter\let\expandafter\stabular\csname #1@stabular\endcsname
+  \expandafter\let\csname stabular*\expandafter\endcsname
+    \csname #1@stabular*\endcsname
+  \expandafter\let\expandafter\endstabular\csname #1@endstabular\endcsname
+  \expandafter\let\csname endstabular*\expandafter\endcsname
+    \csname #1@endstabular*\endcsname
+  }
+\ifcase\number\use@@pkg@@array@@variant\relax
+  \@ifpackageloaded{array}{\load@stabular{pkgarray}}{\load@stabular{kernel}}%
+  \AddToHook{package/array/after}{\load@stabular{pkgarray}}%
+\else\relax
+  \@ifpackageloaded{array}{}{\RequirePackage{array}}%
+  \load@stabular{pkgarray}%
+\fi
+%    \end{macrocode} 
+% \end{macro}
+%
+% \iffalse
+%</package>
+% \fi
+%
+% \Finale

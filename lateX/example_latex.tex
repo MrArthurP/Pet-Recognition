@@ -1,0 +1,280 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Example of an article for the RBCA Journal                %
+%                                                           %
+% Please note that whilst this template provides a          %
+% preview of the typeset manuscript for submission, it      %
+% will not necessarily be the final publication layout.     %
+%                                                           %
+% a4paper: UK paper size toggle                             %
+% alpha-refs: author-year citation and bibliography toggle  %
+% RBCA_v3.0: RBCA latex class
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% below we need to define the primary language of the paper - for paper in Portuguese you must change "english" by "brazilian".
+\documentclass[alpha-refs,brazilian]{RBCA_v3.0}
+
+% Uncomment this line if the article is in Portuguese.
+%\AtBeginDocument{\renewcommand{\harvardand}{e}}
+
+%%% Place your packages here
+%%% \usepackage[options]{package}
+
+%%%
+
+
+%%% Paper title
+\title{Alimentador Inteligente para Múltiplos Pets via Internet das Coisas e Visão Computacional}
+
+%%% This "second" title in English will be mandatory and will only appear in papers written in Portuguese.
+%%% Este "segundo" título, em inglês, será obrigatório e aparecerá  SOMENTE em artigos escritos em português.
+\titleother{Intelligent Feeder for Multiple Pets via Internet of Things and Computer Vision}
+
+%%% Use the \authfn to add symbols for additional footnotes, if any. 1 is reserved for correspondence e-mails; then continuing with 2,... for contributions.
+%%% The orcid number of authors (\orcid) is optional.
+\author[1]{Carlos Roberto da Silveira Júnior \orcid{0000-0000-0000-0000}}
+\author[2]{Arthur Skowronski Passos \orcid{0000-0000-0000-0000}}
+\author[2]{Rakel Germano Couto \orcid{0000-0000-0000-0000}}
+%\author[2]{Fourth Author}
+
+\affil[1]{Instituto Federal de Educação, Ciência e Tecnologia de Goiás - Campus Goiânia, Brazil}
+%\affil[2]{Second Institution}
+
+%%% Author e-mails
+\authnote{\authfn{1}carlos.junior@ifg.edu.br; arthurpassos16@gmail.com; rakelgermanocouto@gmail.com}
+
+%%% "Short" author for running page header - until 3 authors
+%\runningauthor{First, Second \& Third}
+
+%%% "Short" author for running page header - more than 3 authors
+\runningauthor{First et al.}    
+
+%%% Paper category:
+%%% English  : Original paper,  Experience Report     or Tutorial
+%%% Português: Artigo original, Relato de experiência ou Tutorial
+\papercat{Artigo original}
+
+%%% Editor should only set information about the issue journal and the paper
+\jvolume{11}           % volume number
+\jissue{3}             % issue number
+\jyear{2019}           % edition year
+\jmonth{November}      % edition month
+
+\setcounter{page}{1}   % number of the first page of the paper
+\firstpage{1}
+\jid{9999}             % paper ID 
+
+\jrec{yyyy-mm-dd}      % date of article submission
+\jrev{yyyy-mm-dd}      % date of final paper revision
+\jacc{yyyy-mm-dd}      % date of paper accepted
+
+
+\begin{document}
+
+\begin{frontmatter}
+	
+\maketitle
+\thispagestyle{empty}
+
+\begin{Abstract} % abstract in english
+The Abstract (200 words maximum) should be structured to include the following details: \textbf{Background}, the context, and purpose of the study; \textbf{Results}, the main findings; \textbf{Conclusions}, summary, and potential implications. Please minimize the use of abbreviations and do not cite references in the abstract.
+\end{Abstract}
+
+\begin{keywords}
+Keyword1; keyword 2; keyword 3 (Three to five keywords representing the main content of the article, in alphabetic order)
+\end{keywords}
+
+\begin{resumo} % resumo em português
+	O Resumo (com até 200 palavras) deverá ser estruturado para abordar os seguintes detalhes: \textbf{Background}, o contexto e propósito do estudo; \textbf{Resultados}, os principais encontrados; \textbf{Conclusões}, um breve resumo do trabaho e as implicações em potencial. Por favor, evite, na medida do possível, o uso de abreviaturas e não cite referências no resumo.
+\end{resumo}
+
+\begin{palavras_chave} % palavras-chave em português 
+	Palavra-chave 1; palavra-chave 2; palavra-chave 3 (De três a cinco palavras-chave que representem os principais tópicos do artigo, em ordem alfabética)
+\end{palavras_chave}
+
+\end{frontmatter}
+
+
+\section{Introduction to this Template}
+The Revista Brasileira de Computação Aplicada (RBCA) is an \textbf{open-access journal} linked to the \href{http://ppgca.upf.br}{Graduate Program in Applied Computing (PPGCA)} of the \href{http://www.upf.br}{University of Passo Fundo}, Brazil. RBCA aims to provide to the scientific community article that presents an interdisciplinary perspective of the application of Computing in different areas of knowledge.
+
+This document is the \LaTeX{} template for RBCA journal manuscript submissions. \textcolor{red}{Submissions that do not use the format available in this template will be automatically rejected.} 
+
+\textbf{Articles submitted to RBCA should be between 8 and 15 pages and will be published electronically.} The languages accepted by RBCA are English (preferably) and Portuguese. We alert the authors that the preparation of the manuscript should be made carefully, both in its scientific content and in its grammatical correctness.
+
+There are essential commands in the preamble that you will need to modify for your manuscript. Define the paper language (``english'' or ``brazilian'') in \verb|\documentclass| command and specify your manuscript's category with the \verb|\papercat{...}| command. See the sample code in the preamble for a sample of how the title, author (names, orcid, affiliation, and e-mail) information can be specified. \textbf{If the paper is in Portuguese you need to inform the title in English using the} \verb|\titleother{...}| \textbf{command.} Information about this edition of RBCA and publication details of the paper will be filled out by the RBCA's editor.
+
+This template has been edited and validated in the \href{http://www.texstudio.org/}{TexStudio\copyright} program and the \href{https://www.overleaf.com/}{Overleaf\copyright} Collaborative Writing and Publishing System. Any questions or problems regarding this template report to the RBCA e-mail (\textcolor{blue}{rbca@upf.br}).
+
+The remainder of this current section will provide some sample \LaTeX{} code for various elements you may want to include in your manuscript.
+
+\section{Manuscript format rules and styles}
+
+\subsection{Sectional Headings}
+You can use \verb|\section{...}|, \verb|\subsection{...}| commands to add more sections and subsections to your manuscript. Further sectional levels are provided by \verb|\subsubsection| and \verb|\paragraph|.
+
+\subsection{Citations and References}
+The RBCA use the \verb|alpha-refs| document class option for authoryear citations using the \verb|dcu| bibliography style from the \href{https://www.dcu.ie/library/classes_and_tutorials/citing.shtml}{Design Computing Unit} of the University of Sydney, a variant of \href{https://www.ctan.org/pkg/harvard}{Harvard style}. This class is defined in \verb|RBCA_v2.0.cls| class file.
+
+Use the \verb|\citep| or \verb|\cite| commands for citations in the format ``(Authors; year)'' or ``Authors (year)'', respectively.
+Some examples of citations are shown below:
+\begin{itemize}
+	\item Book: \cite{Dongarra2003} and \citep{Wickham2017};
+	\item Book chapter: \cite{Holbig2004};
+	\item Article in journal: \citep{Fernandes2017} and \cite{Resenes2019};
+	\item Article in conferences proceedings: \cite{Holbig2014};
+	\item Online documents or websites: \citep{Shiny2019} and \cite{R2019};
+	\item Masters/Thesis: \cite{Nicolau2018};
+	\item Technical reports: \citep{Holbig2003}.
+\end{itemize}
+
+In your bib file \textcolor{red}{\textbf{not use}} \verb|doi| and \verb|url| fields. If the reference has DOI, use the \verb|note| field to put the complete DOI address of this reference (e.g.,  bibitem \verb|@article{Fernandes2017,...}| in the \verb|references.bib| file). If the reference is online but does not have DOI, use the \verb|note| field as follows: "Available at http://xxx.xxx" (e.g., bibitem \verb|@Manual{R2019,...}| in the \verb|references.bib| file).
+
+For reference citations (using \verb|\citep| or \verb|\cite| commands), the citation should be linked to their respective reference, according to examples presented previously (task performed automatically by the RBCA \LaTeX\ class).
+
+\subsubsection{This is a 3rd level heading}
+
+Use \verb|\subsubsection| to get a 3rd level heading.
+
+
+\paragraph{This is a 4th level heading}
+
+~\\Use \verb|\paragraph| to get a 4th level heading. \textbf{Not use a 5th level heading in your manuscript}.
+
+
+\subsection{Figures and Tables}
+Figures and tables are added with the usual \verb|figure| and \verb|table| environments, e.g., \cref{fig:example,fig:example:wide} and \cref{tab:example}. Use \verb|figure*| and \verb|table*| if you need a two-column wide figure or table, as in \cref{fig:example:wide} and \cref{tab:example:wide}. If your table has a note, you can use \verb|threeparttable| and \verb|tablenotes| environments, as in \autoref{tab:example}.
+
+For the citation of figures, tables and equations use \verb|\cref{}| command. Their numbers should be linked to their figures, tables, and equations (task performed automatically by the RBCA \LaTeX\ class).
+
+\begin{figure}[bt!] %% preferably at bottom or top of column
+\centering
+\includegraphics[width=\linewidth]{example-image}
+\caption{An example figure}\label{fig:example}
+\end{figure}
+
+\begin{figure*}%[b!]  %% Add a [b!] if you prefer the wide image to be at the bottom of the page
+	\centering
+	\includegraphics[width=.6\textwidth]{example-image}
+	\caption{An example wide figure}
+	\label{fig:example:wide}
+\end{figure*}
+
+
+\begin{table}[ht]
+	\centering
+		\begin{threeparttable}
+		\caption{Fonts and styles of the manuscript}
+		\label{tab:example}
+		\begin{tabular}{lcc}
+			\toprule
+			Item & Font size & Font style\\
+			\toprule
+			{\fontsize{16pt}{27pt}\bfseries Title of paper} & 16~pt & bold\\
+			{\fontsize{13pt}{18pt}Authors} & 13~pt & bold\\
+			{\fontsize{9pt}{13pt}Institution} & 9~pt & --\\
+			{\fontsize{8pt}{9.5pt}Author e-mail} & 8~pt & --\\
+			{\fontsize{10pt}{16pt}\bfseries\MakeUppercase{Paper category}} & 12~pt & bold\\
+			{\fontsize{9pt}{11pt}Text of Abstract/Resumo} & 9~pt & --\\
+			{\fontsize{9pt}{10.5pt}Text of paper} & 9~pt & --\\
+			{\fontsize{9pt}{9pt}Figure and Table caption} & 9~pt & --\\
+			{\fontsize{11pt}{12pt}\bfseries 1~Section} & 11~pt &	bold\\
+			{\fontsize{10pt}{11pt}\bfseries 1.1~Subsection} & 10~pt &	bold\\
+			{\fontsize{9pt}{11pt}\bfseries 1.1.1~3rd level} & 9~pt & bold\\
+			{\fontsize{9pt}{11pt}\itshape 1.1.1.1~4rd level} & 9~pt & italic\\
+			\bottomrule
+		\end{tabular}
+
+	\begin{tablenotes}
+		\footnotesize
+		\item This is a table note.
+		\item \textsuperscript{*}Another note.
+	\end{tablenotes}
+
+\end{threeparttable}
+\end{table}
+
+\begin{table*}[ht]
+	\caption{Matrix multiplication with \emph{imatrix} data (adapted from \citep{Holbig2003})}\label{tab:example:wide}
+	% Use "S" column identifier (from siunitx) to align on decimal point.
+	% Use "L", "R" or "C" column identifier for auto-wrapping columns with tabularx.
+	\begin{tabularx}{\linewidth}{c c C C C C}
+		\toprule
+	    \textbf{Program in:} & Result/Matrix order  & \textbf{128 $\times$ 128} & \textbf{256 $\times$ 256} & \textbf{512 $\times$ 512} & \textbf{1024 $\times$ 1024}\\
+		\midrule
+        C-XSC     & sequential  & 1.04666 & 5.11339 & 27.49690 & 204.10700 \\
+        using long          & 8 processors & 0.28522 & 1.17378 & 6.36642 & 45.96950 \\
+        accumulator          & speedup & 3.66965 & 4.35634 & 4.31905 & 4.44005 \\
+        \hline
+        C-XSC & sequential & 0.63083 & 3.41555 & 21.16520 & 222.75400 \\
+        with     & 8 processors & 0.24378 & 1.16967 & 6.43267 & 43.80560 \\
+        BLAS routines          & speedup & 2.58763 & 2.92009 & 3.29026 & 5.08505 \\
+        \hline
+        C-XSC with & sequential & 0.42283 & 1.69116 & 6.78124 & 31.38550 \\
+        Dotk=1 and          & 8 processors & 0.11418 & 0.44201 & 1.76142 & 8.72964 \\
+        BLAS routines          & speedup & 3.70316 & 3.82604 & 3.84987 & 3.59527 \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
+
+\subsection{Formulas and equations}
+Equations and formulas should be placed on a new line, centralized and numbered consecutively for reference purposes, using the \verb|equation| environment, as can be seen in \cref{eq:example1,eq:example2} or in \cref{eq:example3}.  
+
+\begin{equation}
+	\Delta T_{(ij)} (\textit{k})= T_{(ij)} (\textit{k}) - T^*_{(ij)} (\textit{k})
+\label{eq:example1}
+\end{equation}
+
+\begin{equation}
+	T_{moc}(\textit{k}) =  T_{(ij)}(\textit{k}) - \Delta T_{(ij)} (\textit{k})
+\label{eq:example2}
+\end{equation}
+
+\begin{equation}
+BIAS = \frac{1}{M_{total} }\sum_{i=1}^{M_{total}} (T_{i} - T^{*}_{i})
+\label{eq:example3}
+\end{equation}
+
+
+\subsection{Program code listings}
+
+Program code listings should use the \verb|lstlisting| package and are considered as figures. For reference purposes, we recommended that the lines of code be numbered. For example, the code of \cref{lst:R_code} shows a code in R language, where line 5 starts a function. The \LaTeX\ code in the template shows how to set up a code listing. In the citation (using \verb|\cref{}| command) of code listings, their number should be linked to their listing (task performed automatically by the RBCA \LaTeX\ class).
+
+\begin{figure}[hb!]
+\begin{lstlisting}[language=R]
+require(doSNOW)
+cl<-makeCluster(4) # number of cores
+registerDoSNOW(cl)
+# create a function check()
+check <-function(n) {
+  for(i in 1:1000) {
+    sme <- matrix(rnorm(100), 10, 10)
+    solve(sme)
+  }
+}
+times <- 100     # times to run the loop
+foreach(j=1:times ) %dopar% check(j)
+stopCluster(cl)
+\end{lstlisting}	
+\caption{Source code in R language using \texttt{lstlisting} package}
+\label{lst:R_code}
+\end{figure}
+
+
+\subsection{Size, margins and footnotes of the manuscript}
+The page type used by RBCA is the ``letter paper -- letterpaper'', with a size defined as 19cm $\times$ 28cm. The left margin has 2.5cm, and the right margin is 2cm. The top margin has 2cm, and the bottom margin is 2.5cm. In \cref{tab:example}, we show the fonts and styles of the manuscript. Footnotes can be used throughout the text using \verb|\footnote|~\footnote{Footnote example} command . This formatting is performed automatically by the RBCA \LaTeX\ class.
+
+\subsection{Abbreviations}
+The abbreviations used in the text are defined of this way: ``word or text (abbreviation)''.
+
+
+\section{Submission of manuscripts}
+Submission of the manuscripts should follow the guidelines presented on the RBCA website. The website describes the entire evaluation process of manuscripts submitted to the Journal.
+
+\section*{Acknowledgments}
+
+The Acknowledgments section should be placed at the end of the manuscript, before the References section, without numbering.
+
+%% Specify your .bib file name here, without the extension .bib
+\bibliography{references} 
+
+\end{document}

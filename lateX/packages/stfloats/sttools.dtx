@@ -1,0 +1,147 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2025 by Sigitas Tolu\v{s}is <sigitas@vtex.lt>
+% ---------------------------------------------------------------------------
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Sigitas Tolu\v{s}is.
+%
+% This work consists of the files sttools.dtx and sttools.ins
+% and the derived filebases: boundbox.sty, cuted.sty, floatpag.sty,
+% flushend.sty, marginal.sty, midfloat.sty, stabular.sty,
+% stfloats.sty, texsort.sty.
+%
+% Also available from:
+%  http://www.vtex.lt/tex/download/macros/
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{sttools.dtx}
+%</driver>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\begin{document}
+  \DocInput{sttools.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \DoNotIndex{\newcommand,\newenvironment}
+%
+% \providecommand*{\url}{\texttt}
+% \GetFileInfo{sttools.dtx}
+% \title{The \textsf{sttools} collection}
+% \author{Sigitas Tolu\v{s}is \\ \url{sigitas@vtex.lt}}
+% \date{2025.10.13}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% This is collection of various
+% packages historically placed in a bundle and maintained by Sigitas Tolu\v{s}is.
+%
+% \section{Usage}
+%
+% \begin{itemize}
+%
+% \item \textbf{cuted.sty, v2.10 2025/12/15} -- place some material
+% page width wide at any
+% place on twocolumn page with existing text reformatted under inserted
+% material (\cs{preCutedStrip}\marg{...} and \cs{postCutedStrip}\marg{...} 
+% can be used to add extra stuff before and after the |strip|);
+%
+% -- toggle between onecolumn and twocolumn layouts within the same document
+% using the following commands: \cs{switchonecolumn} and \cs{switchtwocolumn};
+% \\\texttt{(2021/10/04): rewrite with new balance algorithm and options;
+% \\(2025/01/29): bugfix version with improved funcionality;
+% \\(2025/06/18): adapt to the latest latex kernel;
+% \\(2025/10/13): bugfix version;
+% \\(2025/12/15): bugfix and improved version}.
+%
+% \item \textbf{cuted2024.sty, v2.5 2025/10/13} (readded for the LaTeX kernel before 2025):  
+% \\\texttt{(2025/10/13): bugfix version;  
+% \\\texttt{(2025/12/15): removed}.
+%
+% \item \textbf{floatpag.sty, v2.0 2021/10/04} -- set pagestyle for floats page;
+% \\ \texttt{(2021/10/04): removed latex209 compatibility; added rotated dblfloat support};
+%
+% \item \textbf{flushend.sty, v4.3 2025/06/18} -- balance page in twocolumn mode; 
+% \\\texttt{(2014/03/03): totally rewritten with new algorithm to support footnotes, 
+% top  floats and column break before one line section title.
+% \\(2014/04/24): bugfix version;
+% \\(2015/03/27): bugfix version with improved funcionality:
+% \\              - spreaded or fixed right column height;
+% \\              - optional old algorithm for backward compatability;
+% \\(2015/04/14): set debug option off by default; keeplastbox modified;
+% \\(2016/06/21): bugfix compatibility with luatexja package;
+% \\(2017/03/27): bugfix for get@@footnoterule@@box; options for some checks on/off;
+% \\(2020/10/14): bugfix development and test;
+% \\(2020/10/16): bugfix version: modern with noautobase;
+% \\(2021/10/04): another rewrite with new balance algorithm and options;
+% \\(2025/02/11): adapt to the latest latex kernel and a new hook;
+% \\(2025/06/18): adapt to the latest latex kernel}.
+%
+% \item \textbf{midfloat.sty, v1.1 2012/05/29} -- insert onecolumn stuff in twocolumn
+% page;
+% \\\texttt{(2025/06/18): removed}.
+%
+% \item \textbf{stabular.sty, v2.3 2025/06/18} -- use modified tabular environment;
+% \\\texttt{(2014/03/20): removed extra stuff and left only possibility to break 
+%       on page boundary;
+% \\added tabular variant from array packag;
+% \\(2021/10/04): sync with array bugfix version for tabular;
+% \\(2025/04/10): code polishing;
+% \\(2025/06/18): adapt to the latest latex kernel}.
+%
+% \item \textbf{stfloats.sty, v3.4 2025/06/18} -- enable enriched floats output mechanism;
+% \\\texttt{(2016/06/28): compatibility bugfix with 2015 latexrelease;
+% \\(2017/03/27): compatibility bugfix with 2017-05-01 latexrelease;
+% \\(2025/06/18): adapt to the latest latex kernel}.
+%
+% \item \textbf{texsort.sty, v1.1 2012/05/29} -- sort numerical values; \\\texttt{TODO:
+% extend (rewrite) to support alphnanumerical values for sorting.
+% \\(2025/10/13): removed}.
+% \end{itemize}
+%
+% Just load any of the provided packages in the standard way:
+% |\usepackage{|\meta{package}|}| or
+% |\RequirePackage{|\meta{package}|}|.
+%
+% \medskip
+% To read documentation: |texdoc |\meta{package}.
+% 
+% \StopEventually{}
+%
+% \Finale
+\endinput
