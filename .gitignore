@@ -49,7 +49,7 @@ python/Inteligencia_Artificial/**/*.tiff
 
 # Checkpoints de treinamento, modelos finais e gráficos gerados
 python/Inteligencia_Artificial/models/**
-python/Inteligencia_Artificial/training_checkpoints/**
+python/Inteligencia_Artificial/training_checkpoints/
 python/Inteligencia_Artificial/training_graphs/**
 
 # Manter pastas e placeholders visíveis para o projeto
