@@ -205,8 +205,9 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 
 ## Pendências
 
-- [ ] Adicionar arquivo .cpp de configuração da ESP32CAM
-- [ ] Usar extensão `PlatformIO` para debug do código **arduino** e **esp** diretamente pelo projeto
+- [x] Adicionar arquivo .cpp de configuração da ESP32CAM
+- [x] Usar extensão `PlatformIO` para debug do código **arduino** e **esp** diretamente pelo projeto
+- [ ] Ferificar se os códigos das placas rodam via **Platformio IDE**
 - [ ] Aumentar o Dataset de imagens **positivas** via _webscrapping_ de outros animais e estrurar o conjunto para que funcione com essas novas imagens
 - [ ] Melhorar a avaliação do modelo.
 
