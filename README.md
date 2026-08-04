@@ -64,14 +64,14 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 ## Tecnologias Utilizadas
 
 | Camada | Tecnologia |
-|---|---|
+| --- | --- |
 | Firmware | C++ (Arduino IDE), ESP8266, MQTT |
 | Backend | Python 3, Django |
 | Banco de Dados | SQLite3 |
 | Frontend | HTML/CSS/JS (templates Django) |
-| Inteligência Artificial | Python (modelo de reconhecimento de imagem) |
+| Inteligência Artificial | Python (modelo de reconhecimento de imagem), WSL2 (com suporte a GPU local via CUDA) |
 | Comunicação IoT | Wi-Fi, protocolo MQTT |
-| Hardware | ESP8266 NodeMCU, motor de alto torque, espiral distribuidora |
+| Hardware | ESP8266 NodeMCU, Esp32Cam, Arduino Uno, motor de alto torque, espiral distribuidora |
 
 ---
 
@@ -117,11 +117,11 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 - Bibliotecas: `PubSubClient` (MQTT), `ESP8266WiFi`
 
 ### Aplicação Web
-- Python 3.8+
-- pip
+- Python 3.11.15
+- pip 26.2
 
 ### Inteligência Artificial
-- Python 3.8+
+- Python  3.11.15
 - Dependências listadas em `requirements.txt`
 
 ---
@@ -205,7 +205,10 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 
 ## Pendências
 
-- [ ] Adicionar arquivo Arduino de configuração da ESP32CAM 
+- [ ] Adicionar arquivo .cpp de configuração da ESP32CAM
+- [ ] Usar extensão `PlatformIO` para debug do código **arduino** e **esp** diretamente pelo projeto
+- [ ] Aumentar o Dataset de imagens **positivas** via _webscrapping_ de outros animais e estrurar o conjunto para que funcione com essas novas imagens
+- [ ] Melhorar a avaliação do modelo.
 
 ---
 
