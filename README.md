@@ -65,6 +65,7 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 
 | Camada | Tecnologia |
 | --- | --- |
+| Sistema Operacional | Wsl2 (Subsistema Windows) |
 | Firmware | C++ (Arduino IDE), ESP8266, MQTT |
 | Backend | Python 3, Django |
 | Banco de Dados | SQLite3 |
@@ -115,6 +116,7 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 - [Arduino IDE](https://www.arduino.cc/en/software) (versão 1.8+)
 - Suporte à placa ESP8266 instalado no Arduino IDE
 - Bibliotecas: `PubSubClient` (MQTT), `ESP8266WiFi`
+- Subsistema WSL2 configurado.
 
 ### Aplicação Web
 - Python 3.11.15
@@ -126,68 +128,26 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 
 ---
 
-## Como Executar
+## Configurações
 
-### Firmware (Arduino/ESP8266)
+### WSL2 
 
-1. Abra o arquivo `arduino/CelulaDeCarga/CelulaDeCarga.ino` na Arduino IDE.
-2. Configure as variáveis de rede no código:
-   ```cpp
-   const char* ssid     = "SEU_WIFI";
-   const char* password = "SUA_SENHA";
-   const char* mqtt_server = "IP_DO_BROKER";
-   ```
-3. Selecione a placa **NodeMCU 1.0 (ESP-12E Module)** e a porta serial correta.
-4. Faça o upload do firmware para o dispositivo.
+Para que o código seja executado corretamente é necessário realizar a instalação do subsistema Ubuntu ``WSL2`` devido à falta de compatibilidade da biblioteca `TensorFlow` como `Windows` no treinamento da **Inteligência Artificial**. A seguir está o passo a passo para realizar a instalação do subsistema e utilização via VsCode:
 
-### Aplicação Web (Django)
+1. Instale o subsistema Linux via comando **PoweShell** `wsl --install`. O subsistema da distro `Ubuntu` será instalada no computador
 
-1. Acesse o diretório do projeto:
-   ```bash
-   cd python/Django
-   ```
+> Verifique nas configurações do seu computador `Painel de Controle → Programas e Recursos → Ativar ou Desativar Programas e Recursos do Windows` a opção `Subsistema Linux para Windows` esteja ativada
 
-2. Crie e ative um ambiente virtual:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate      # Linux/macOS
-   venv\Scripts\activate         # Windows
-   ```
+2. Após feita a instalação, mova este projeto para uma pasta dentro do usuário do **Linux**: `Ubuntu → home → usuário → pasta do projeto`. Abra a pasta via **VsCode**, que deverá identificar o subsistema automaticamente. Uma outra forma seria abrir o **cmd** do **Ubuntu** e digitar `code .` que o vs code será aberto via **Ubuntu**, e após isso, você selecionará a pasta do projeto.
 
-3. Instale as dependências:
-   ```bash
-   pip install -r requirements.txt
-   ```
+3. Para que a placa de vídeo (GPU) do seu computador seja identificada pelo sistema, é necessário informar ao sistema onde estão localizadas as bibliotecas **CUDA** no sistema via comando `export` e `source ~/.bashrc`:
 
-4. Execute as migrações do banco de dados:
-   ```bash
-   python manage.py migrate
-   ```
+```
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
 
-5. Inicie o servidor de desenvolvimento:
-   ```bash
-   python manage.py runserver
-   ```
-
-6. Acesse a aplicação em `http://localhost:8000`.
-
-### Inteligência Artificial
-
-1. Acesse o diretório:
-   ```bash
-   cd python/Inteligencia_Artificial
-   ```
-
-2. Certifique-se de que as dependências estão instaladas (consulte `requirements.txt` na pasta Django ou instale individualmente os pacotes necessários).
-
-3. Execute o script de reconhecimento:
-   ```bash
-   python Reconhecimento_Multiplos....py
-   ```
-
-> **Nota:** Para treinar o modelo com seus próprios dados, adicione imagens positivas em `positive/` e negativas em `negative/` antes de executar o treinamento.
-
----
+4. Após feito isso, execute a célula de importação de bibliotecas de Inteligência Artificial e verifique se a GPU for encontrada.
 
 ## Funcionalidades
 
