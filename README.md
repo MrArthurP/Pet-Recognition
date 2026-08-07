@@ -167,7 +167,8 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PAT
 
 - [x] Adicionar arquivo .cpp de configuração da ESP32CAM
 - [x] Usar extensão `PlatformIO` para debug do código **arduino** e **esp** diretamente pelo projeto
-- [ ] Ferificar se os códigos das placas rodam via **Platformio IDE**
+- [x] Realizar Limpeza de Dados nas pastas `positive/dogx`
+- [ ] Verificar se os códigos das placas rodam via **Platformio IDE**
 - [ ] Aumentar o Dataset de imagens **positivas** via _webscrapping_ de outros animais e estrurar o conjunto para que funcione com essas novas imagens
 - [ ] Melhorar a avaliação do modelo.
 
