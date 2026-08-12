@@ -1,0 +1,87 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Chang et~al.]{Chang, Cheng, Allaire, Xie \harvardand\
+  McPherson}{2019}{Shiny2019}
+Chang, W., Cheng, J., Allaire, J., Xie, Y. \harvardand\ McPherson, J.
+  \harvardyearleft 2019\harvardyearright .
+\newblock {\em shiny: Web Application Framework for R}.
+\newblock Available at \url{https://CRAN.R-project.org/package=shiny}.
+
+\harvarditem[Dongarra et~al.]{Dongarra, Foster, Fox, Gropp, Kennedy, Torczon
+  \harvardand\ White}{2003}{Dongarra2003}
+Dongarra, J., Foster, I., Fox, G., Gropp, W., Kennedy, K., Torczon, L.
+  \harvardand\ White, A. (eds)  \harvardyearleft 2003\harvardyearright .
+\newblock {\em Sourcebook of Parallel Computing}, Morgan Kaufmann Publishers
+  Inc., San Francisco, CA, USA.
+
+\harvarditem[Fernandes et~al.]{Fernandes, Nicolau, Pavan, H{\"o}lbig, Karrei,
+  de~Vargas, Bavaresco, Lazzaretti \harvardand\ Tsukahara}{2017}{Fernandes2017}
+Fernandes, J. M.~C., Nicolau, M., Pavan, W., H{\"o}lbig, C.~A., Karrei, M.,
+  de~Vargas, F., Bavaresco, J. L.~B., Lazzaretti, A.~T. \harvardand\ Tsukahara,
+  R.~Y.  \harvardyearleft 2017\harvardyearright .
+\newblock A weather-based model for predicting early season inoculum build-up
+  and spike infection by the wheat blast pathogen, {\em Tropical Plant
+  Pathology} {\bf 42}(3):~230--237.
+\newblock \url{http://dx.doi.org/10.1007/s40858-017-0164-2}.
+
+\harvarditem[H{\"o}lbig et~al.]{H{\"o}lbig, J{\'u}nior, Alcalde \harvardand\
+  Diverio}{2004}{Holbig2004}
+H{\"o}lbig, C.~A., J{\'u}nior, P. S.~M., Alcalde, B. F.~K. \harvardand\
+  Diverio, T.~A.  \harvardyearleft 2004\harvardyearright .
+\newblock Selfverifying solvers for linear systems of equations in {C-XSC},
+  {\em in} R.~Wyrzykowski, J.~Dongarra, M.~Paprzycki \harvardand\
+  J.~Wa{\'{s}}niewski (eds), {\em Parallel Processing and Applied Mathematics:
+  5th International Conference, PPAM 2003, Czestochowa, Poland, September 7-10,
+  2003. Revised Papers}, Springer Berlin Heidelberg, Berlin, Heidelberg,
+  pp.~292--297.
+\newblock \url{http://dx.doi.org/10.1007/978-3-540-24669-5_38}.
+
+\harvarditem[H{\"o}lbig et~al.]{H{\"o}lbig, Pavan, Fernandes, Mazzonetto
+  \harvardand\ Zortea}{2014}{Holbig2014}
+H{\"o}lbig, C.~A., Pavan, W., Fernandes, J. M.~C., Mazzonetto, A. \harvardand\
+  Zortea, T.  \harvardyearleft 2014\harvardyearright .
+\newblock An approach for encapsulating {F}ortran coded models into a {R}
+  package, {\em in} D.~Ames, N.~Quinn \harvardand\ A.~Rizzoli (eds), {\em
+  Proceedings of the 7th International Congress on Environmental Modelling and
+  Software}, IEMSS, San Diego, California, USA.
+\newblock Available at
+  \url{http://www.iemss.org/sites/iemss2014/papers/iemss2014_submission_146.pdf}.
+
+\harvarditem{H{\"o}lbig \harvardand\ Kr{\"a}mer}{2003}{Holbig2003}
+H{\"o}lbig, C. \harvardand\ Kr{\"a}mer, W.  \harvardyearleft
+  2003\harvardyearright .
+\newblock Selfverifing solvers for dense systems of linear equations realized
+  in {C-XSC}, {\em Technical report, Preprint~BUGHW-WRSWT~2003/1}, BUGH,
+  Universit{\"a}t Wuppertal, Wuppertal, Germany.
+\newblock Available at
+  \url{http://www2.math.uni-wuppertal.de/~xsc/preprints/prep_03_1.pdf}.
+
+\harvarditem{Nicolau}{2018}{Nicolau2018}
+Nicolau, M.  \harvardyearleft 2018\harvardyearright .
+\newblock {\em Croptest : data-drive test automation for crop modeling
+  systems}, Master in {A}pplied {C}omputing, Graduate Program in Applied
+  Computing at University of Passo Fundo.
+\newblock Available at \url{http://tede.upf.br/jspui/handle/tede/1531}.
+
+\harvarditem{{R Core Team}}{2019}{R2019}
+{R Core Team}  \harvardyearleft 2019\harvardyearright .
+\newblock {\em R: A Language and Environment for Statistical Computing}, R
+  Foundation for Statistical Computing, Vienna, Austria.
+\newblock Available at \url{https://www.R-project.org/}.
+
+\harvarditem[Resenes et~al.]{Resenes, Pavan, H{\"o}lbig, Fernandes, Sheila,
+  Porter \harvardand\ Hoogenboom}{2019}{Resenes2019}
+Resenes, J. d.~A., Pavan, W., H{\"o}lbig, C.~A., Fernandes, J. M.~C., Sheila,
+  V., Porter, C. \harvardand\ Hoogenboom, G.  \harvardyearleft
+  2019\harvardyearright .
+\newblock j{DSSAT}: A javascript module for {DSSAT-CSM} integration, {\em
+  SoftwareX} {\bf 10}:~100271.
+\newblock \url{https://doi.org/10.1016/j.softx.2019.100271}.
+
+\harvarditem{Wickham \harvardand\ Grolemund}{2017}{Wickham2017}
+Wickham, H. \harvardand\ Grolemund, G.  \harvardyearleft 2017\harvardyearright
+  .
+\newblock {\em R for Data Science: Import, Tidy, Transform, Visualize, and
+  Model Data}, 1 edn, O'Reilly Media, Sebastopol, CA.
+
+\end{thebibliography}

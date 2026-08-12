@@ -1,0 +1,58 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/siifa/Arthur/PetRecognition-main/Boards/Arduino-Uno/include",
+                "/home/siifa/Arthur/PetRecognition-main/Boards/Arduino-Uno/src",
+                "/home/siifa/Arthur/PetRecognition-main/Boards/Arduino-Uno/lib/HX711/src",
+                "/home/siifa/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "/home/siifa/.platformio/packages/framework-arduino-avr/variants/standard",
+                "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/siifa/Arthur/PetRecognition-main/Boards/Arduino-Uno/include",
+                    "/home/siifa/Arthur/PetRecognition-main/Boards/Arduino-Uno/src",
+                    "/home/siifa/Arthur/PetRecognition-main/Boards/Arduino-Uno/lib/HX711/src",
+                    "/home/siifa/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "/home/siifa/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "/home/siifa/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60119",
+                "ARDUINO_AVR_UNO",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega328P__",
+                ""
+            ],
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "/home/siifa/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega328p",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
