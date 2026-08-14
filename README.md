@@ -1,65 +1,6 @@
 # 🐾 Alimentador Inteligente para Múltiplos Pets
 
-> Protótipo de alimentador automático IoT para múltiplos animais de estimação, com controle via Wi-Fi, aplicação web e integração com ESP8266.
-
----
-
-## 📋 Índice
-
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Arquitetura do Sistema](#arquitetura-do-sistema)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Estrutura do Repositório](#estrutura-do-repositório)
-- [Pré-requisitos](#pré-requisitos)
-- [Como Executar](#como-executar)
-  - [Firmware (Arduino/ESP8266)](#firmware-arduinoesp8266)
-  - [Aplicação Web (Django)](#aplicação-web-django)
-  - [Inteligência Artificial](#inteligência-artificial)
-- [Funcionalidades](#funcionalidades)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-
----
-
-## Sobre o Projeto
-
-O aumento no número de animais domésticos por residência e a crescente preocupação com sua saúde criam uma demanda real por soluções acessíveis de manejo alimentar. O controle inadequado da qualidade e quantidade da ração pode causar obesidade, desnutrição e outras complicações graves — problemas que soluções comerciais existentes endereçam, mas a custos elevados e inacessíveis para a maioria dos tutores.
-
-Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltiplos Pets** que automatiza o processo de alimentação, minimizando o esforço manual dos tutores e promovendo a saúde dos animais. O sistema é composto por:
-
-- Um **mecanismo físico** com espiral giratória acionada por motor de alto torque para distribuição de ração;
-- Um **microcontrolador ESP8266** programado via Arduino IDE para controle local e conectividade;
-- Uma **aplicação web Django** para gerenciamento de usuários, pets e agendamentos de alimentação;
-- Comunicação via **Wi-Fi + protocolo MQTT** entre o dispositivo e a aplicação;
-- Um módulo de **Inteligência Artificial** para reconhecimento de múltiplos pets.
-
----
-
-## Arquitetura do Sistema
-
-```
-┌─────────────────┐         MQTT / Wi-Fi        ┌──────────────────────┐
-│  Aplicação Web  │◄────────────────────────────►│  ESP8266 (NodeMCU)   │
-│    (Django)     │                              │  Firmware Arduino    │
-└────────┬────────┘                              └──────────┬───────────┘
-         │                                                  │
-         │  HTTP / REST                              Motor + Espiral
-         │                                         (Distribuição de Ração)
-┌────────▼────────┐
-│  Dashboard Web  │
-│  Controle de    │
-│  Pets e Usuários│
-└─────────────────┘
-         │
-┌────────▼────────┐
-│  Módulo de IA   │
-│  Reconhecimento │
-│  de Múltiplos   │
-│  Pets           │
-└─────────────────┘
-```
-
----
+> Protótipo de alimentador automático IoT para múltiplos animais de estimação utilizando Visão Computacional, com controle via Wi-Fi, aplicação web e integração com ESP8266/ESP32CAM/Arduino.
 
 ## Tecnologias Utilizadas
 
@@ -67,24 +8,26 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 | --- | --- |
 | Sistema Operacional | Wsl2 (Subsistema Windows) |
 | Firmware | C++ (Arduino IDE), ESP8266, MQTT |
-| Backend | Python 3, Django |
+| Backend | Python3, Django, JupyterNotebook|
 | Banco de Dados | SQLite3 |
 | Frontend | HTML/CSS/JS (templates Django) |
 | Inteligência Artificial | Python (modelo de reconhecimento de imagem), WSL2 (com suporte a GPU local via CUDA) |
 | Comunicação IoT | Wi-Fi, protocolo MQTT |
-| Hardware | ESP8266 NodeMCU, Esp32Cam, Arduino Uno, motor de alto torque, espiral distribuidora |
+| Hardware | ESP8266 NodeMCU, Esp32Cam, Arduino Uno|
 
 ---
 
-## Estrutura do Repositório
+## Estrutura do Repositório (Estruturação em Andamento)
 
 ```
 📦 raiz do repositório
-├── 📁 arduino/
-│   └── 📁 CelulaDeCarga/
-│       └── CelulaDeCarga.ino        # Firmware do ESP8266 (controle do alimentador)
+├── 📁 embedded/
+│   ├── 📁 Arduino-Uno/
+│   ├── 📁 Esp-32CAM/
+│   └── 📁 Esp-8266/
 │
-├── 📁 lateX/                        # Documentação acadêmica do projeto (LaTeX)
+├── 📁 docs/
+│   ├── 📁 Latex/
 │
 ├── 📁 python/
 │   ├── 📁 Django/                   # Aplicação web principal
@@ -99,9 +42,15 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 │   │
 │   └── 📁 Inteligencia_Artificial/  # Módulo de reconhecimento de pets
 │       ├── 📁 anchor/               # Configurações de âncoras (detecção de objetos)
+│           ├── 📁 dog1/
+│           ├── 📁 dog2/
+|           ...
 │       ├── 📁 application_data/     # Dados da aplicação de IA
 │       ├── 📁 negative/             # Imagens negativas para treinamento
 │       ├── 📁 positive/             # Imagens positivas para treinamento
+│           ├── 📁 dog1/
+│           ├── 📁 dog2/
+|           ...
 │       ├── 📁 training_checkpoints/ # Checkpoints do treinamento do modelo
 │       └── Reconhecimento_Multiplos...  # Script principal de reconhecimento
 │
@@ -112,20 +61,32 @@ Este projeto desenvolve um **protótipo de Alimentador Inteligente para Múltipl
 
 ## Pré-requisitos
 
-### Firmware (ESP8266)
-- [Arduino IDE](https://www.arduino.cc/en/software) (versão 1.8+)
-- Suporte à placa ESP8266 instalado no Arduino IDE
-- Bibliotecas: `PubSubClient` (MQTT), `ESP8266WiFi`
-- Subsistema WSL2 configurado.
+### Firmware
+- Extensões do VsCode:
+   - Platform IO IDE
+   - Monitor Serial
+- Subsistema WSL2.
+   - Configurado para uso da GPU Local.
 
 ### Aplicação Web
-- Python 3.11.15
-- pip 26.2
+- Frontend:
+   - Django
+   - Html
+   - CSS
+- Backend:
+   - Python
+   - JavaScript
 
 ### Inteligência Artificial
-- Python  3.11.15
-- Dependências listadas em `requirements.txt`
-
+- Treino e construção do modelo CNN:
+   - TensorFlow
+- PipeLine:
+   - Scikit-Learn.Keras
+- WebScrapping
+   - Sellenium
+- Augumentação de Dados:
+   - TensorFlow
+   - Pillow
 ---
 
 ## Configurações
@@ -149,6 +110,10 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PAT
 
 4. Após feito isso, execute a célula de importação de bibliotecas de Inteligência Artificial e verifique se a GPU for encontrada.
 
+### Django
+
+...
+
 ## Funcionalidades
 
 - [x] Controle do alimentador via aplicação web
@@ -171,6 +136,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PAT
 - [ ] Verificar se os códigos das placas rodam via **Platformio IDE**
 - [ ] Aumentar o Dataset de imagens **positivas** via _webscrapping_ de outros animais e estrurar o conjunto para que funcione com essas novas imagens
 - [ ] Melhorar a avaliação do modelo.
+- [ ] Reestruturar as pastas do repositório.
 
 ---
 
@@ -188,7 +154,7 @@ Contribuições são bem-vindas! Para contribuir:
 
 ## Licença
 
-Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
+...
 
 ---
 
