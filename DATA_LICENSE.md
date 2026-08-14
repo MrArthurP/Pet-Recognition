@@ -44,3 +44,18 @@ sob a licença **CC BY 2.0**.
 
 - Perfil: https://www.flickr.com/groups/lovemydog/pool/78428166@N00/ 
 - Licença: https://creativecommons.org/licenses/by/2.0/
+
+## Dataset complementar: microsoft/cats_vs_dogs (Hugging Face)
+
+Este projeto também utiliza (ou utilizou como referência/complemento) o dataset
+"Cats vs. Dogs", derivado do Asirra (Microsoft Research / Petfinder.com),
+disponibilizado em: https://huggingface.co/datasets/microsoft/cats_vs_dogs
+
+A licença original não é especificada pelos mantenedores ("unknown" /
+"More Information Needed" na página do dataset). As imagens têm origem
+no Petfinder.com, agregadas pela Microsoft Research para o projeto Asirra.
+
+Citação:
+Elson, J., Douceur, J., Howell, J., & Saul, J. (2007). Asirra: A CAPTCHA
+that Exploits Interest-Aligned Manual Image Categorization. Proceedings
+of the 14th ACM Conference on Computer and Communications Security (CCS).
