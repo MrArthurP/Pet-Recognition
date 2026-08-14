@@ -110,9 +110,40 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PAT
 
 4. Após feito isso, execute a célula de importação de bibliotecas de Inteligência Artificial e verifique se a GPU for encontrada.
 
+### WebScrapping usando WSL2
+
+Utiliza-se um Script WebScrapping para a construção do dataset de treinamento. Para que funcione corretamente é necessário realizar a instalação do ``Google Chrome`` no subsistema **Linux** do **Windows**: **WSL2**. Para isso, faça a instalação usando os comandos via cmd:
+```
+sudo apt update
+sudo apt install -y wget curl gpg
+curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt update
+sudo apt install -y google-chrome-stable
+```
+Após isso, garanta que o **selenium** tenha permissão suficiente para executar o *webscrapping*:
+```
+chmod +x /home/siifa/.cache/selenium/chromedriver/linux64/151.0.7922.76/chromedriver
+```
+
+#### Orientações
+O Script webscrapping tem a funcionalidade de buscar extrair as fotos de uma galeria em uma página web, que contêm diversas páginas de fotos da mesma galeria. O algoritmo acessa a página principal, e de acordo com o número de páginas específicados pelo usuário, acessa as outras páginas/rotas da galeria de fotos. 
+
+Existem duas formas de executar o Script: extração de uma única galeria, ou de várias galerias.
+
+**Única Galeria:** Para extrair fotos de uma única galeria, basta mudar os valores de `BASE_URL` para a url específica e `TOTAL_PAGES` para a quantidade de páginas que a galeria possui.
+
+**Multiplas Galerias:** Para extrair fotos de várias galerias, basta adicionar todas as urls e a quantidade de páginas das respectivas galerias da forma `BASE_URL_LIST = [(url1, pags1), (url2, pags2), ...]`.
+
+`OUTPUT_PATH` sempre será igual a `POS_PATH`, para que as imagens possam serem armazenadas na pasta de imagens positivas, mas você pode alterar seu valor com o que desejar. O Script lê quantos cachorros já existem na pasta, e cria uma pasta com nome específico de acordo com o número de cachorros já salvos. 
+
+> Observa-se a necessidade de realizar uma limpeza nas imagens adquiridas, não esqueça de retirar as imagens que não contém as informações necessárias para o treinamento.
+
 ### Django
 
 ...
+
+---
 
 ## Funcionalidades
 
