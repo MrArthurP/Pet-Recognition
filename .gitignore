@@ -30,7 +30,6 @@ __pycache__/
 # Imagens e mídia do dataset (sem remover a estrutura das pastas)
 python/Inteligencia_Artificial/anchor/**
 !python/Inteligencia_Artificial/anchor/.gitkeep
-python/Inteligencia_Artificial/positive/**
 !python/Inteligencia_Artificial/positive/.gitkeep
 python/Inteligencia_Artificial/negative/**
 !python/Inteligencia_Artificial/negative/.gitkeep
