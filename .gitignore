@@ -27,17 +27,14 @@ __pycache__/
 *.sqlite3
 *.db
 
-# Imagens e mídia do dataset (sem remover a estrutura das pastas)
-python/Inteligencia_Artificial/anchor/**
-!python/Inteligencia_Artificial/anchor/.gitkeep
-!python/Inteligencia_Artificial/positive/.gitkeep
-python/Inteligencia_Artificial/negative/**
-!python/Inteligencia_Artificial/negative/.gitkeep
-python/Inteligencia_Artificial/application_data/input_image/**
-!python/Inteligencia_Artificial/application_data/input_image/.gitkeep
-python/Inteligencia_Artificial/application_data/verification_images/**
-!python/Inteligencia_Artificial/application_data/verification_images/.gitkeep
-!python/Inteligencia_Artificial/application_data/verification_images/**/.gitkeep
+# 1. Ignora todos os arquivos dentro destas pastas específicas
+python/Inteligencia_Artificial/anchor/*
+python/Inteligencia_Artificial/positive/*
+python/Inteligencia_Artificial/negative/*
+python/Inteligencia_Artificial/application_data/input_image/*
+python/Inteligencia_Artificial/application_data/verification_images/*
+
+# 2. Ignora todas as imagens por extensão no projeto
 python/Inteligencia_Artificial/**/*.jpg
 python/Inteligencia_Artificial/**/*.jpeg
 python/Inteligencia_Artificial/**/*.png
@@ -47,12 +44,13 @@ python/Inteligencia_Artificial/**/*.webp
 python/Inteligencia_Artificial/**/*.tif
 python/Inteligencia_Artificial/**/*.tiff
 
-# Checkpoints de treinamento, modelos finais e gráficos gerados
-python/Inteligencia_Artificial/models/**
-python/Inteligencia_Artificial/training_checkpoints/
-python/Inteligencia_Artificial/training_graphs/**
+# 3. Libera navegação em subpastas e preserva .gitkeep / README.md (DEVE FICAR NO FINAL)
+!**/.gitkeep
+!**/README.md
 
-# Manter pastas e placeholders visíveis para o projeto
-!python/Inteligencia_Artificial/**/.gitkeep
-!python/Inteligencia_Artificial/**/README.md
+# Checkpoints de treinamento, modelos finais e gráficos gerados
+python/Inteligencia_Artificial/models/
+python/Inteligencia_Artificial/training_checkpoints/
+python/Inteligencia_Artificial/training_graphs/
+
 *:Zone.Identifier
