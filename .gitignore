@@ -1,8 +1,15 @@
-# Ambiente Virtual
+# ==========================================
+# 1. AMBIENTE VIRTUAL E ARQUIVOS DO SISTEMA
+# (Ficam no topo para não serem re-liberados)
+# ==========================================
 .venv/
-.env
+.env/
+env/
+venv/
+ENV/
+*.Zone.Identifier
 
-# Python
+# Python cache & artifacts
 __pycache__/
 *.py[cod]
 *.pyo
@@ -11,7 +18,7 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# Modelos e artefatos treinados
+# Modelos, dados e checkpoints
 *.h5
 *.tflite
 *.keras
@@ -22,35 +29,26 @@ __pycache__/
 *.pb
 *.onnx
 *.index
-
-# Banco de dados locais
 *.sqlite3
 *.db
-
-# 1. Ignora todos os arquivos dentro destas pastas específicas
-python/Inteligencia_Artificial/anchor/*
-python/Inteligencia_Artificial/positive/*
-python/Inteligencia_Artificial/negative/*
-python/Inteligencia_Artificial/application_data/input_image/*
-python/Inteligencia_Artificial/application_data/verification_images/*
-
-# 2. Ignora todas as imagens por extensão no projeto
-python/Inteligencia_Artificial/**/*.jpg
-python/Inteligencia_Artificial/**/*.jpeg
-python/Inteligencia_Artificial/**/*.png
-python/Inteligencia_Artificial/**/*.bmp
-python/Inteligencia_Artificial/**/*.gif
-python/Inteligencia_Artificial/**/*.webp
-python/Inteligencia_Artificial/**/*.tif
-python/Inteligencia_Artificial/**/*.tiff
-
-# 3. Libera navegação em subpastas e preserva .gitkeep / README.md (DEVE FICAR NO FINAL)
-!**/.gitkeep
-!**/README.md
-
-# Checkpoints de treinamento, modelos finais e gráficos gerados
 python/Inteligencia_Artificial/models/
 python/Inteligencia_Artificial/training_checkpoints/
 python/Inteligencia_Artificial/training_graphs/
 
-*:Zone.Identifier
+# ==========================================
+# 2. BLOQUEIO APENAS DE IMAGENS E ARQUIVOS MEDIA
+# ==========================================
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.webp
+*.tif
+*.tiff
+
+# ==========================================
+# 3. MANTÉM A ESTRUTURA DE PASTAS E PLACEHOLDERS
+# ==========================================
+!**/.gitkeep
+!**/README.md
