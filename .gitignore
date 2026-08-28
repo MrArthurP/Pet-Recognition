@@ -4,7 +4,6 @@
 # ==========================================
 .venv/
 .env/
-env/
 venv/
 ENV/
 *.Zone.Identifier
@@ -50,5 +49,6 @@ python/Inteligencia_Artificial/training_graphs/
 # ==========================================
 # 3. MANTÉM A ESTRUTURA DE PASTAS E PLACEHOLDERS
 # ==========================================
-!**/.gitkeep
-!**/README.md
+
+# !**/.gitkeep
+# !**/README.md
